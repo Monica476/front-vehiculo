@@ -1,0 +1,40 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">{{titulo | uppercase}}</span>
+                    <form class="mt-3" [formGroup]="vehiculoForm" (ngSubmit)="agregarVehiculo()">
+                        <div class="mb-3">
+                            <input type="text" formControlName="marca" 
+                            class="form-control-lg" placeholder="Marca">
+                            <div class="tex-danger" *ngIf="vehiculoForm.get('vehiculo')?.hasError('required') && vehiculoForm.get('vehiculo')?.touched">
+                                <span>la marca del vehiculo <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="modelo"
+                            class="form-control-lg" placeholder="Modelo">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="matricula"
+                            class="form-control-lg" placeholder="Matricula">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="color"
+                             class="form-control-lg" placeholder="Color">
+                        </div>
+                        <div class="mb-3">
+                            <input type="number" formControlName="anio" class="form-control-lg" placeholder="Año" min="1900" max="2100"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                        </div>                     
+                        <div class="mb-3">
+                            <button routerLink="/" class="btn btn-secondary btn-lg float-start">VOLVER</button>
+                            <button type="submit"   class="btn btn-success btn-lg float-end" >ACEPTAR</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
